@@ -7,8 +7,8 @@ import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 const allJobs = [
-  {id:1, title: "Frontend Developer", company: "TechCorp", location: "Remote", type: "fulltime" ,tag:{}},
-  { id:2,title: "Backend Engineer", company: "InnoSoft", location: "Bangalore", type: "parttime" ,tag:{}},
+  {id:1, title: "Frontend Developer", company: "TechCorp", location: "Remote", type: "full-time" ,tag:{}},
+  { id:2,title: "Backend Engineer", company: "InnoSoft", location: "Bangalore", type: "part-time" ,tag:{}},
   { id:3,title: "Data Analyst", company: "DataVerse", location: "Remote", type: "internship" ,tag:{}},
 ]
 
@@ -56,8 +56,8 @@ export default function JobList() {
     </SelectTrigger>
     <SelectContent className="bg-white text-black border border-black">
       <SelectItem value="all">All</SelectItem>
-      <SelectItem value="fulltime">Full-Time</SelectItem>
-      <SelectItem value="parttime">Part-Time</SelectItem>
+      <SelectItem value="full-time">Full-Time</SelectItem>
+      <SelectItem value="part-time">Part-Time</SelectItem>
       <SelectItem value="internship">Internship</SelectItem>
     </SelectContent>
   </Select>
