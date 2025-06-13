@@ -1,5 +1,5 @@
 type Props = {
-  params: { id: string };
+  params: { id: number };
 };
 
 export default function JobDetail({ params }: Props) {
