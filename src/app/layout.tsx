@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "HireForge",
-  description: "Launch your career today",
+  description: "Connecting talent with opportunity.",
 };
 
 export default function RootLayout({
