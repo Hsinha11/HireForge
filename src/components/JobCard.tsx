@@ -4,7 +4,7 @@ import { Button } from "./ui/button"
 import Link from "next/link"
 
 type JobProps = {
-    id:number
+    id:string
   title: string
   company: string
   location: string

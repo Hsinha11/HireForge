@@ -51,8 +51,8 @@ export default function Navbar() {
           <Link href="/jobs" className="text-sm text-blue-700 hover:text-shadow-blue-800">For Jobseekers</Link>
           </button>
           <Link href="/companies" className="text-sm text-blue-700 hover:text-blue-800">For Companies</Link>
-          <Button variant="outline" className="text-blue-600">Login</Button>
-          <Button className="bg-blue-600">Sign Up</Button>
+          <Button variant="outline" className="text-blue-600 hover:text-blue-800 cursor-pointer">Login</Button>
+          <Button className="bg-blue-600 cursor-pointer hover:bg-blue-800">Sign Up</Button>
         </div>
 
         {/* Mobile Toggle */}

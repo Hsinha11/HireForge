@@ -11,33 +11,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select";
-
-const allJobs = [
-    {
-        id: 1,
-        title: "Frontend Developer",
-        company: "TechCorp",
-        location: "Remote",
-        type: "full-time",
-        tag: {},
-    },
-    {
-        id: 2,
-        title: "Backend Engineer",
-        company: "InnoSoft",
-        location: "Bangalore",
-        type: "part-time",
-        tag: {},
-    },
-    {
-        id: 3,
-        title: "Data Analyst",
-        company: "DataVerse",
-        location: "Remote",
-        type: "internship",
-        tag: {},
-    },
-];
+import { allJobs } from "@/mock/jobs";
 
 export default function JobList() {
     const [title, setTitle] = useState("");
