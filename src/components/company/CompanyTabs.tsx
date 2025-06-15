@@ -15,10 +15,11 @@ import JobCard from "../JobCard";
 type Props = {
     companyName: string;
     description: string;
+    tab:string;
 };
 
-export default function CompanyTabs({ companyName, description }: Props) {
-    const [activeTab, setActiveTab] = useState("Overview");
+export default function CompanyTabs({ companyName, description ,tab}: Props) {
+    const [activeTab, setActiveTab] = useState(tab);
     const [title, setTitle] = useState("");
     const [type, setType] = useState("all");
 

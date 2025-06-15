@@ -1,11 +1,16 @@
+"use client"
 import { allCompanies } from "@/mock/companies"
-import { notFound } from "next/navigation"
+import { notFound, useParams, useSearchParams } from "next/navigation"
 import Navbar from "@/components/Navbar"
 import CompanyCard from "@/components/company/CompanyCard"
 import CompanyTabs from "@/components/company/CompanyTabs"
+import Footer from "@/components/Footer"
 
-export default function CompanyPage({ params }: { params: { id: string } }) {
+export default function CompanyPage() {
+  const params = useParams();
   const id = params.id
+  const searchParams = useSearchParams(); // Hook
+  const tab = searchParams.get("tab") || "Overview" ;
   const company = allCompanies.find((c) => c.id === id)
   if (!company) return notFound()
 
@@ -23,9 +28,11 @@ export default function CompanyPage({ params }: { params: { id: string } }) {
           />
         </div>
         <div className="col-span-2">
-          <CompanyTabs companyName={company.name} description={company.description} />
+          <CompanyTabs companyName={company.name} description={company.description} 
+          tab = {tab}/>
         </div>
       </main>
+      <Footer/>
     </>
   )
 }
