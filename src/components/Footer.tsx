@@ -9,33 +9,33 @@ export default function Footer() {
         {/* Branding */}
         <div>
           <h2 className="text-xl font-bold">HireForge</h2>
-          <p className="text-sm text-gray-400 mt-2">Connecting talent with opportunity.</p>
+          <p className="text-sm text-gray-50 mt-2">Connecting talent with opportunity.</p>
         </div>
 
         {/* Navigation */}
         <div>
-          <h3 className="font-semibold text-gray-300 mb-2">Navigation</h3>
+          <h3 className="font-semibold text-gray-100 mb-2">Navigation</h3>
           <ul className="space-y-1">
-            <li><Link href="/" className="text-sm text-gray-400 hover:text-white">Home</Link></li>
-            <li><Link href="/jobs" className="text-sm text-gray-400 hover:text-white">Jobs</Link></li>
-            <li><Link href="/companies" className="text-sm text-gray-400 hover:text-white">Companies</Link></li>
-            <li><Link href="/contact" className="text-sm text-gray-400 hover:text-white">Contact</Link></li>
+            <li><Link href="/" className="text-sm text-gray-100 hover:text-white">Home</Link></li>
+            <li><Link href="/jobs" className="text-sm text-gray-100 hover:text-white">Jobs</Link></li>
+            <li><Link href="/companies" className="text-sm text-gray-100 hover:text-white">Companies</Link></li>
+            <li><Link href="/contact" className="text-sm text-gray-100 hover:text-white">Contact</Link></li>
           </ul>
         </div>
 
         {/* Socials */}
         <div>
-          <h3 className="font-semibold text-gray-300 mb-2">Follow Us</h3>
+          <h3 className="font-semibold text-gray-100 mb-2">Follow Us</h3>
           <ul className="space-y-1">
-            <li><a href="#" className="text-sm text-gray-400 hover:text-white">GitHub</a></li>
-            <li><a href="#" className="text-sm text-gray-400 hover:text-white">LinkedIn</a></li>
-            <li><a href="#" className="text-sm text-gray-400 hover:text-white">Twitter</a></li>
+            <li><a href="#" className="text-sm text-gray-100 hover:text-white">GitHub</a></li>
+            <li><a href="#" className="text-sm text-gray-100 hover:text-white">LinkedIn</a></li>
+            <li><a href="#" className="text-sm text-gray-100 hover:text-white">Twitter</a></li>
           </ul>
         </div>
       </div>
 
       {/* Copyright */}
-      <div className="text-center text-md text-gray-500 mt-6">
+      <div className="text-center text-md text-gray-300 mt-6">
         © {new Date().getFullYear()} HireForge. All rights reserved.
       </div>
     </footer>
