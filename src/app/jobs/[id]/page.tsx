@@ -61,6 +61,7 @@ import { Briefcase, MapPin } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+import Footer from "@/components/Footer"
 
 export default function JobDetailPage() {
   const params = useParams()
@@ -110,6 +111,7 @@ export default function JobDetailPage() {
           </div>
         </Card>
       </main>
+      <Footer/>
     </>
   )
 }
