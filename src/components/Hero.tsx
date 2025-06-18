@@ -16,11 +16,12 @@ const Hero = () => {
 
         <div className="flex justify-center gap-4 pt-4">
           
-          <button className="px-12 py-4 text-xl bg-blue-600 text-white rounded hover:bg-blue-700 transition cursor-pointer"> 
             <Link href="/jobs">
+          <button className="px-12 py-4 text-xl bg-blue-600 text-white rounded hover:bg-blue-700 transition cursor-pointer"> 
             Explore Jobs
-          </Link>
           </button>
+          </Link>
+          
           <button className="px-12 py-4 border text-xl border-blue-600 text-blue-600 rounded hover:bg-blue-50 transition cursor-pointer">
             Hire Talent
           </button>
