@@ -1,34 +1,3 @@
-// "use client";
-// import Link from "next/link";
-
-// const Navbar = () => {
-//   return (
-//     <header className="w-full px-8 py-4 flex justify-between items-center border-b shadow-sm bg-white">
-//       {/* LEFT: Logo */}
-//       <div className="text-2xl font-bold text-blue-600">
-//         <Link href="/">HireForge</Link>
-//       </div>
-
-//       {/* CENTER: Nav Links */}
-//       <nav className="hidden md:flex space-x-6 font-medium text-gray-700">
-//         {/* 🧠 Your Task: Implement these links as real navigation later */}
-//         <button>For Job Seekers</button>
-//         <button>For Companies</button>
-//       </nav>
-
-//       {/* RIGHT: Auth Buttons */}
-//       <div className="space-x-4">
-//         {/* 🧠 Your Task: Add logic for routing or modal triggering */}
-//         <button className="px-4 py-2 border rounded hover:bg-gray-100 cursor-pointer">Login</button>
-//         <button className="px-4 py-2 bg-blue-600 text-white rounded cursor-pointer hover:bg-blue-700">
-//           Sign Up
-//         </button>
-//       </div>
-//     </header>
-//   );
-// };
-
-// export default Navbar;
 'use client'
 
 import Link from "next/link"
@@ -40,10 +9,10 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <nav className="bg-white border-b shadow px-4 py-3">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
+    <nav className="bg-white border-b shadow px-4 py-4">
+      <div className="max-w-full mx-auto flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="text-2xl font-bold text-blue-600">HireForge</Link>
+        <Link href="/" className="text-3xl font-bold text-blue-600">HireForge</Link>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center space-x-4">

@@ -12,7 +12,7 @@ type Props = {
 
 export default function CompanyCard({ name, website, location, employees, tags }: Props) {
   return (
-    <Card className="w-full shadow-md border border-gray-200">
+    <Card className="w-full shadow-md border  border-gray-200">
       <CardContent className="p-6 space-y-4">
         <div className="text-xl font-bold">{name}</div>
 

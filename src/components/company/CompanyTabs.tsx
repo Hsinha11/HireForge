@@ -9,27 +9,35 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 
-import { allJobs } from "@/mock/jobs";
 import JobCard from "../JobCard";
+
+type Job = {
+    id: string;
+    title: string;
+    company: string;
+    location: string;
+    type: string;
+    // add other fields as needed
+};
 
 type Props = {
     companyName: string;
     description: string;
-    tab:string;
+    tab: string;
+    jobs: Job[]; // Use a specific Job type
 };
 
-export default function CompanyTabs({ companyName, description ,tab}: Props) {
+export default function CompanyTabs({ companyName, description, tab, jobs }: Props) {
     const [activeTab, setActiveTab] = useState(tab);
     const [title, setTitle] = useState("");
     const [type, setType] = useState("all");
 
-    const filteredJobs = allJobs.filter(
+    const filteredJobs = jobs.filter(
         (job) =>
             job.title.toLowerCase().includes(title.toLowerCase()) &&
             (type != "all"
                 ? job.type.toLowerCase() === type.toLowerCase()
-                : true) && (job.company === companyName)
-
+                : true) 
     );
 
     return (
@@ -53,7 +61,6 @@ export default function CompanyTabs({ companyName, description ,tab}: Props) {
 
             {activeTab === "Overview" && (
                 <div className="space-y-4 text-gray-700 leading-relaxed">
-
                     <h2 className="text-xl font-semibold">{companyName}</h2>
                     <p>{description}</p>
                 </div>
