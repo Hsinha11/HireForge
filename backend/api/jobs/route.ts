@@ -49,6 +49,8 @@ export async function jobDetailRoute(app: FastifyInstance) {
 }
 
 
+
+
 export async function jobCreateRoute(app: FastifyInstance){
   app.post('/jobs', async (request, reply) => {
   const body = request.body as {

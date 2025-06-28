@@ -4,6 +4,8 @@ import React from 'react'
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from '@/components/Footer';
+import { auth, currentUser } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
 
 type Company = {
   id: string;
@@ -14,15 +16,27 @@ type Company = {
 };
 
 export default  async function CompaniesPage() {
+  // Server-side protection - redirect to sign-in if not authenticated
+  const { userId } = await auth();
+  
+  if (!userId) {
+    redirect("/sign-in");
+  }
+
+  const user = await currentUser();
+
    const res = await fetch("http://localhost:4000/companies", {cache: 'no-store'});
    const allCompanies = await res.json();
   return (
     <>
       <Navbar />
       <main className="max-w-5xl mx-auto py-10 px-4 space-y-6">
-        <h2 className="text-3xl font-bold text-center text-blue-800">
-                        Explore Top Companies
-                    </h2>
+        <div className="text-center mb-8">
+          <h2 className="text-3xl font-bold text-blue-800 mb-2">
+            Explore Top Companies
+          </h2>
+          <p className="text-gray-600">Welcome back, {user?.firstName || user?.emailAddresses[0]?.emailAddress}!</p>
+        </div>
         {allCompanies.map((company: Company) => (
           <div key={company.id} className="bg-gray-100 rounded-xl p-6 shadow">
             <h2 className="text-xl font-semibold">{company.name}</h2>

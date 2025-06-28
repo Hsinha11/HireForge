@@ -7,6 +7,7 @@ import CompanyCard from "@/components/company/CompanyCard"
 import CompanyTabs from "@/components/company/CompanyTabs"
 import Footer from "@/components/Footer"
 import { Loader2 } from "lucide-react"
+import ProtectedRoute from "@/components/ProtectedRoute"
 
 type Job = {
   id: string;
@@ -67,25 +68,27 @@ useEffect(() => {
   return (
     <>
       <Navbar />
-      <main className="max-w-6xl mx-auto py-12 px-6 grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="col-span-1">
-          <CompanyCard
-            name={company.name}
-            website={company.website}
-            location={company.location}
-            employees={company.employees}
-            tags={company.tags}
+      <ProtectedRoute>
+        <main className="max-w-6xl mx-auto py-12 px-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="col-span-1">
+            <CompanyCard
+              name={company.name}
+              website={company.website}
+              location={company.location}
+              employees={company.employees}
+              tags={company.tags}
+              />
+          </div>
+          <div className="col-span-2">
+            <CompanyTabs
+              companyName={company.name}
+              description={company.description}
+              tab={tab}
+              jobs = {company.jobs}
             />
-        </div>
-        <div className="col-span-2">
-          <CompanyTabs
-            companyName={company.name}
-            description={company.description}
-            tab={tab}
-            jobs = {company.jobs}
-          />
-        </div>
-      </main>
+          </div>
+        </main>
+      </ProtectedRoute>
       <Footer />
     </>
   )

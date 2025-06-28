@@ -4,8 +4,40 @@ import Link from "next/link"
 import { useState } from "react"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { UserButton, SignedIn, SignedOut, useUser } from "@clerk/nextjs"
+import { useRouter } from "next/navigation"
 
-export default function Navbar() {
+export function RoleButtons() {
+  const { user } = useUser()
+  const router = useRouter()
+
+  const setRoleAndRedirect = async (role: "applicant" | "company") => {
+    if (!user) return router.push("/sign-in")
+
+      const current = user.unsafeMetadata?.role
+      if (current !== role) {
+        try {
+          await user.update({
+            unsafeMetadata: { role }
+          });
+        } catch (error) {
+          console.error("Failed to update user role:", error);
+          // Continue anyway - role will be set on next login
+        }
+      }
+  
+      router.push(role === "company" ? "/dashboard" : "/jobs")
+  }
+
+  return (
+    <div className="flex gap-2">
+      <button onClick={() => setRoleAndRedirect("applicant")} className="text-md cursor-pointer text-blue-700 hover:text-blue-800">For Jobseekers</button>
+      <button onClick={() => setRoleAndRedirect("company")} className="text-md cursor-pointer text-blue-700 hover:text-blue-800">For Companies</button>
+    </div>
+  )
+}
+
+  export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -16,12 +48,22 @@ export default function Navbar() {
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center space-x-4">
-          <button>
-          <Link href="/jobs" className="text-sm text-blue-700 hover:text-shadow-blue-800">For Jobseekers</Link>
-          </button>
-          <Link href="/companies" className="text-sm text-blue-700 hover:text-blue-800">For Companies</Link>
-          <Button variant="outline" className="text-blue-600 hover:text-blue-800 cursor-pointer">Login</Button>
-          <Button className="bg-blue-600 cursor-pointer hover:bg-blue-800">Sign Up</Button>
+        <RoleButtons />
+          
+          {/* Show UserButton when signed in */}
+          <SignedIn>
+            <UserButton afterSignOutUrl="/" />
+          </SignedIn>
+          
+          {/* Show Login/Sign Up buttons when signed out */}
+          <SignedOut>
+            <Link href="/sign-in">
+              <Button variant="outline" className="text-blue-600 hover:text-blue-800 cursor-pointer">Login</Button>
+            </Link>
+            <Link href="/sign-up">
+              <Button className="bg-blue-600 cursor-pointer hover:bg-blue-800">Sign Up</Button>
+            </Link>
+          </SignedOut>
         </div>
 
         {/* Mobile Toggle */}
@@ -32,11 +74,25 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden mt-2 space-y-2 px-2">
-          <Link href="/jobs" className="block text-md text-blue-700">For Jobseekers</Link>
-          <Link href="/companies" className="block text-md text-blue-700">For Companies</Link>
-          <Button variant="outline" className="w-full text-blue-600 text-md cursor-pointer hover:text-blue-800">Login</Button>
-          <Button className="w-full text-md bg-blue-600 hover:bg-blue-800 cursor-pointer">Sign Up</Button>
+        <div className="md:hidden mt-2 space-y-2 flex flex-col items-center justify-center gap-2 px-2">
+          <RoleButtons />
+          
+          {/* Show UserButton when signed in */}
+          <SignedIn>
+            <div className="flex justify-center">
+              <UserButton afterSignOutUrl="/" />
+            </div>
+          </SignedIn>
+          
+          {/* Show Login/Sign Up buttons when signed out */}
+          <SignedOut>
+            <Link href="/sign-in">
+              <Button variant="outline" className="w-full text-blue-600 text-md cursor-pointer hover:text-blue-800">Login</Button>
+            </Link>
+            <Link href="/sign-up">
+              <Button className="w-full text-md bg-blue-600 hover:bg-blue-800 cursor-pointer">Sign Up</Button>
+            </Link>
+          </SignedOut>
         </div>
       )}
     </nav>

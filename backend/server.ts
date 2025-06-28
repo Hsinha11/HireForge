@@ -3,7 +3,7 @@
 // backend/server.ts
 import Fastify from 'fastify'
 import cors from '@fastify/cors'
-import { companiesRoute ,companyDetailRoute} from './api/companies/route'
+import { companiesRoute, companyByIdRoute, companyDetailRoute} from './api/companies/route'
 import { jobsRoute , jobDetailRoute ,jobCreateRoute } from './api/jobs/route'
 import { applicationRoutes } from './api/applications/route'
 
@@ -11,11 +11,13 @@ const app = Fastify()
 
 await app.register(cors, { origin: true })
 await app.register(companiesRoute)
+await app.register(companyByIdRoute)
 await app.register(companyDetailRoute)
 await app.register(jobsRoute)
 await app.register(jobDetailRoute)
 await app.register(jobCreateRoute)
 await app.register(applicationRoutes)
+// await app.register(companyJobsRoute)
 app.listen({ port: 4000 }, (err, address) => {
   if (err) {
     console.error(err)

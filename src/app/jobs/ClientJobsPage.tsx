@@ -96,7 +96,7 @@ export default function ClientJobsPage({ jobs }: { jobs: any[] }) {
 
   return (
     <main className="bg-gray-100 min-h-screen py-10">
-      <h1 className="text-center text-3xl font-bold text-blue-600 mb-6">Available Jobs</h1>
+      {/* <h1 className="text-center text-3xl font-bold text-blue-600 mb-6">Available Jobs</h1> */}
       <div className="max-w-4xl mx-auto p-4 space-y-6">
         <div className="flex gap-4">
           <Input

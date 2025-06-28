@@ -19,7 +19,23 @@ export async function companiesRoute(app: FastifyInstance) {
   })
 }
 
-
+export async function companyByIdRoute(app: FastifyInstance) {
+  app.get('/companies/id/:id', async (request, reply) => {
+    const { id } = request.params as { id: string }
+    try {
+      const company = await prisma.company.findUnique({
+        where: { id },
+        include: { jobs: true },
+      })
+      if (!company) {
+        return reply.status(404).send({ error: 'Company not found' })
+      }
+      reply.send(company)
+    } catch (err) {
+      reply.status(500).send({ error: 'Failed to fetch company details' ,err})
+    }
+  })
+}
 
 export async function companyDetailRoute(app: FastifyInstance) {
   app.get('/companies/:slug', async (request, reply) => {

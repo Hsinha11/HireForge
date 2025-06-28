@@ -35,6 +35,7 @@ export default function HomePage() {
         <>
             <Navbar />
             <Hero />
+
             <section className="w-full py-12 bg-gray-100">
                 <div className="max-w-5xl mx-auto px-4 space-y-6">
                     <h2 className="text-3xl font-bold text-center text-gray-800">
@@ -42,20 +43,17 @@ export default function HomePage() {
                     </h2>
 
                     <div className="w-full  flex flex-col items-center">
-                        <Carousel
-                            opts={{ loop: true }}
-                            className="w-full "
-                        >
+                        <Carousel opts={{ loop: true }} className="w-full ">
                             <CarouselContent>
                                 {reviews.map((review, index) => (
-                                  <CarouselItem
+                                    <CarouselItem
                                         key={index}
                                         className="basis-full "
                                     >
                                         <Card className="w-full">
                                             <CardContent className="flex flex-col items-center justify-center p-6 space-y-2">
                                                 <p className="text-gray-600 italic text-center">
-                                                    “{review.text}”
+                                                    &ldquo;{review.text}&rdquo;
                                                 </p>
                                                 <div className="text-md text-gray-700 font-semibold">
                                                     {review.name}
@@ -68,13 +66,13 @@ export default function HomePage() {
                                     </CarouselItem>
                                 ))}
                             </CarouselContent>
-                                <CarouselPrevious />
+                            <CarouselPrevious />
                             <CarouselNext />
                         </Carousel>
                     </div>
                 </div>
             </section>
-            <Footer/>
+            <Footer />
         </>
     );
 }
