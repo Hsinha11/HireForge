@@ -313,8 +313,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - **Website**: [https://hireforge-new.vercel.app/](https://hireforge-new.vercel.app/)
 - **Email**: harianantsinha2003@gmail.com
-- **Twitter**: [@hireforge](https://twitter.com/hireforge)
-- **LinkedIn**: [HireForge](https://linkedin.com/in/harianantsinha)
+- **Twitter**: [@HarianantS](https://x.com/HarianantS)
+- **LinkedIn**: [Harianant Sinha](https://linkedin.com/in/harianantsinha)
 
 ---
 
