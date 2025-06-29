@@ -9,40 +9,130 @@ export function HeroButtons() {
   const router = useRouter()
   const [isLoading, setIsLoading] = useState(false)
 
+  // const handleClick = async (role: "applicant" | "company") => {
+  //   if (!user) {
+  //     router.push("/sign-in")
+  //     return
+  //   }
+
+  //   setIsLoading(true)
+
+  //   try {
+  //     const current = user.unsafeMetadata?.role
+  //     if (current !== role) {
+  //       await user.update({
+  //         unsafeMetadata: { 
+  //           role: role, 
+  //           slug: role === "company" ? user.id : undefined 
+  //         }
+  //       });
+  //     }
+
+  //     // Navigate after successful update
+  //     if (role === "company") {
+  //       router.push("/companies/create")
+  //     } else {
+  //       router.push("/jobs")
+  //     }
+  //   } catch (error) {
+  //     console.error("Failed to update user role:", error);
+  //     // Show error to user or handle gracefully
+  //     alert("Failed to update role. Please try again.")
+  //   } finally {
+  //     setIsLoading(false)
+  //   }
+  // }
+  // const handleClick = async (role: "applicant" | "company") => {
+  //   if (!user) {
+  //     router.push("/sign-in");
+  //     return;
+  //   }
+  
+  //   setIsLoading(true);
+  
+  //   try {
+  //     const currentRole = user.unsafeMetadata?.role;
+  //     const currentSlug = user.unsafeMetadata?.slug as string | undefined;
+  
+  //     // Handle company case
+  //     if (role === "company") {
+  //       // Already a company
+  //       if (currentRole === "company") {
+  //         if (currentSlug) {
+  //           router.push("/dashboard"); // ✅ has slug → dashboard
+  //         } else {
+  //           router.push("/companies/create"); // 🚧 no slug → complete profile
+  //         }
+  //       } else {
+  //         // Switching role → update metadata, assign temporary slug
+  //         await user.update({
+  //           unsafeMetadata: {
+  //             role: "company",
+  //             slug: user.id, // temporary, overwritten by form later
+  //           },
+  //         });
+  //         router.push("/companies/create");
+  //       }
+  
+  //       return; // done
+  //     }
+  
+  //     // Handle applicant case
+  //     if (role === "applicant" && currentRole !== "applicant") {
+  //       await user.update({
+  //         unsafeMetadata: { role: "applicant" },
+  //       });
+  //     }
+  
+  //     // Redirect applicants
+  //     router.push("/jobs");
+  //   } catch (error) {
+  //     console.error("Failed to update user role:", error);
+  //     alert("Failed to update role. Please try again.");
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // };
+  
   const handleClick = async (role: "applicant" | "company") => {
     if (!user) {
-      router.push("/sign-in")
-      return
+      router.push("/sign-in");
+      return;
     }
-
-    setIsLoading(true)
-
+  
+    setIsLoading(true);
+  
     try {
-      const current = user.unsafeMetadata?.role
-      if (current !== role) {
+      const currentRole = user.unsafeMetadata?.role;
+      const currentSlug = user.unsafeMetadata?.slug as string | undefined;
+  
+      if (role === "company") {
+        // already a company with slug
+        if (currentRole === "company" && currentSlug) {
+          router.push("/dashboard");
+        } else {
+          // send to form, we'll set metadata *after* form is submitted
+          router.push("/companies/create");
+        }
+        return;
+      }
+  
+      // If applicant role not set, set it
+      if (role === "applicant" && currentRole !== "applicant") {
         await user.update({
-          unsafeMetadata: { 
-            role: role, 
-            slug: role === "company" ? user.id : undefined 
-          }
+          unsafeMetadata: { role: "applicant" },
         });
       }
-
-      // Navigate after successful update
-      if (role === "company") {
-        router.push("/dashboard")
-      } else {
-        router.push("/jobs")
-      }
+  
+      router.push("/jobs");
     } catch (error) {
       console.error("Failed to update user role:", error);
-      // Show error to user or handle gracefully
-      alert("Failed to update role. Please try again.")
+      alert("Failed to update role. Please try again.");
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
-
+  };
+  
   return (
     <div className="flex justify-center gap-4 pt-4">
       <button

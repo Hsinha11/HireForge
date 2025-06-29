@@ -12,21 +12,46 @@ export function RoleButtons() {
   const router = useRouter()
 
   const setRoleAndRedirect = async (role: "applicant" | "company") => {
-    if (!user) return router.push("/sign-in")
+    if (!user) {
+      router.push("/sign-in")
+      return
+    }
+      try{
+        const currentRole = user.unsafeMetadata?.role
+        const currentSlug = user.unsafeMetadata?.slug as string | undefined
 
-      const current = user.unsafeMetadata?.role
-      if (current !== role) {
-        try {
-          await user.update({
-            unsafeMetadata: { role }
-          });
-        } catch (error) {
-          console.error("Failed to update user role:", error);
-          // Continue anyway - role will be set on next login
+        if (role === "company" && currentRole === "company" && currentSlug) {
+          router.push("/dashboard")
+        } else {
+          router.push("/companies/create")
         }
-      }
+
+        if (role === "applicant" && currentRole !== "applicant") {
+          await user.update({
+            unsafeMetadata: { role: "applicant" },
+          });
+        }
+    
+        router.push("/jobs");
+        return;
+
+      }catch (error) {
+      console.error("Failed to update user role:", error);
+      alert("Failed to update role. Please try again.");
+    }
+      // const current = user.unsafeMetadata?.role
+      // if (current !== role) {
+      //   try {
+      //     await user.update({
+      //       unsafeMetadata: { role }
+      //     });
+      //   } catch (error) {
+      //     console.error("Failed to update user role:", error);
+      //     // Continue anyway - role will be set on next login
+      //   }
+      // }
   
-      router.push(role === "company" ? "/dashboard" : "/jobs")
+      // router.push(role === "company" ? "/companies/create" : "/jobs")
   }
 
   return (

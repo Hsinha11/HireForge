@@ -1,6 +1,8 @@
 import { auth, currentUser } from "@clerk/nextjs/server"
 import { redirect } from "next/navigation"
 import NewJobForm from "./NewJobForm";
+import Link from "next/link";
+import Navbar from "@/components/Navbar";
 // import Link from "next/link";
 
 interface Job {
@@ -29,6 +31,7 @@ export default async function DashboardPage() {
 
   return (
     <>
+    <Navbar />
     <main className="p-10 max-w-4xl mx-auto">
       <h1 className="text-3xl font-bold mb-6 text-center text-blue-600">📊 {company.name} Dashboard</h1>
       
@@ -46,7 +49,8 @@ export default async function DashboardPage() {
           ))}
         </ul>
       )}
-
+      {/* <Link href="/dashboard/applications" className="text-blue-500">View Applications</Link> */}
+      <Link href="/dashboard/applications" className=" mt-10 text-center block w-full bg-blue-500 text-white p-2 rounded-md">View Applications</Link>
       <NewJobForm companyId={company.id} />
     </main>
       </>

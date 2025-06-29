@@ -4,8 +4,9 @@ import { Briefcase, MapPin, Calendar, DollarSign } from "lucide-react"
 import { Card } from "@/components/ui/card"
 import Footer from "@/components/Footer"
 import ApplyModal from "@/components/job/ApplyModal"
-import { auth, currentUser } from "@clerk/nextjs/server";
+import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
+import Link from "next/link";
 
 type PageProps = {
   params: Promise<{ id: string }>
@@ -19,7 +20,7 @@ export default async function Page({ params }: PageProps) {
     redirect("/sign-in");
   }
 
-  const user = await currentUser();
+  // const user = await currentUser();
   const { id } = await params;
   const res = await fetch(`http://localhost:4000/jobs/${id}`, { cache: 'no-store' })
   if (!res.ok) {
@@ -34,9 +35,7 @@ export default async function Page({ params }: PageProps) {
     <>
       <Navbar />
       <main className="max-w-4xl mx-auto py-12 px-6">
-        <div className="mb-6">
-          <p className="text-gray-600">Welcome back, {user?.firstName || user?.emailAddresses[0]?.emailAddress}!</p>
-        </div>
+        <Link href="/jobs" className="text-blue-500 underline text-lg mb-4 block hover:text-blue-600">Back to Jobs</Link>
       
         <Card className="p-8 space-y-6 border border-gray-200 shadow-lg">
           <div>

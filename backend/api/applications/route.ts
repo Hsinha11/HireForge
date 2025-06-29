@@ -35,3 +35,5 @@ export async function applicationRoutes(app: FastifyInstance) {
     }
   })
 }
+
+

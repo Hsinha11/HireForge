@@ -8,6 +8,8 @@ export const config = {
     "/dashboard/:path*", // protect dashboard
     "/applications",     // protect applications
     "/jobs/:path*",      // protect all job pages
-    "/companies/:path*", // protect all company pages
+    "/companies/:path*",
+    "/companies/create",  // protect all company pages
+    "/companies/create-company",
   ],
 };
