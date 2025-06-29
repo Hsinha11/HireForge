@@ -322,13 +322,13 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
   <p><strong>Built with ❤️ by the HireForge Team</strong></p>
   <p>Star this repository if you found it helpful!</p>
   
-  <a href="https://github.com/Hsinha1109/HireForge/stargazers">
-    <img src="https://img.shields.io/github/stars/Hsinha1109/HireForge?style=social" alt="Stars">
+  <a href="https://github.com/Hsinha11/HireForge/stargazers">
+    <img src="https://img.shields.io/github/stars/Hsinha11/HireForge?style=social" alt="Stars">
   </a>
-  <a href="https://github.com/Hsinha1109/HireForge/network">
-    <img src="https://img.shields.io/github/forks/Hsinha1109/HireForge?style=social" alt="Forks">
+  <a href="https://github.com/Hsinha11/HireForge/network">
+    <img src="https://img.shields.io/github/forks/Hsinha11/HireForge?style=social" alt="Forks">
   </a>
-  <a href="https://github.com/Hsinha1109/HireForge/issues">
-    <img src="https://img.shields.io/github/issues/Hsinha1109/HireForge" alt="Issues">
+  <a href="https://github.com/Hsinha11/HireForge/issues">
+    <img src="https://img.shields.io/github/issues/Hsinha11/HireForge" alt="Issues">
   </a>
 </div>
