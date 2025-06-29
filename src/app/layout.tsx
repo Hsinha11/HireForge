@@ -1,22 +1,44 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Poppins, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ClerkProvider } from "@clerk/nextjs";
+import AppWrapper from "@/components/AppWrapper";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// Main font for body text - clean and readable
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+// Beautiful font for headings - modern and professional
+const poppins = Poppins({
+  variable: "--font-poppins",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  display: "swap",
+});
+
+// Monospace font for code elements
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
+  subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
   title: "HireForge",
   description: "Connecting talent with opportunity.",
+  icons: {
+    icon: [
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    shortcut: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+  },
+  manifest: '/site.webmanifest',
 };
 
 export default function RootLayout({
@@ -26,13 +48,16 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-        <SpeedInsights />
-      </body>
-    </html>
+      <html lang="en">
+        <body 
+          className={`${inter.variable} ${poppins.variable} ${jetbrainsMono.variable} antialiased`}
+        >
+          <AppWrapper>
+            {children}
+          </AppWrapper>
+          <SpeedInsights />
+        </body>
+      </html>
     </ClerkProvider>
   );
 }

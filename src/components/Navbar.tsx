@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { UserButton, SignedIn, SignedOut, useUser } from "@clerk/nextjs"
 import { useRouter } from "next/navigation"
+// import Image from "next/image"
 
 export function RoleButtons() {
   const { user } = useUser()
@@ -69,7 +70,9 @@ export function RoleButtons() {
     <nav className="bg-white border-b shadow px-4 py-4">
       <div className="max-w-full mx-auto flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="text-3xl font-bold text-blue-600">HireForge</Link>
+        <Link href="/" className="text-3xl font-bold text-blue-700 font-heading drop-shadow-lg hover:text-blue-800 transition-colors duration-200 hover:drop-shadow-xl">HireForge
+          {/* <Image src="/logo.png" alt="HireForge" width={100} height={100} /> */}
+        </Link>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center space-x-4">

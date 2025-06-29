@@ -158,9 +158,9 @@ const Hero = () => {
   return (
     <section className="w-full py-20 bg-gradient-to-br from-blue-50 to-white text-center">
       <div className="max-w-3xl mx-auto px-4 space-y-6">
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-800 leading-tight">
-          Find your next opportunity or hire top talent with <span className="text-blue-600">HireForge</span>
-        </h1>
+      <h1 className="font-heading text-4xl md:text-5xl font-bold text-gray-800 leading-tight">
+  Find your next opportunity or hire top talent with <span className="text-blue-700 font-bold drop-shadow-lg hover:text-blue-800 transition-colors duration-200 hover:drop-shadow-xl">HireForge</span>
+</h1>
 
         <p className="text-lg text-gray-700">
           A modern platform connecting skilled professionals with great companies.
