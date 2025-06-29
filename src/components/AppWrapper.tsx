@@ -1,7 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import LoadingScreen from './LoadingScreen';
+import { useState, useEffect, lazy, Suspense } from 'react';
+
+// Lazy load the LoadingScreen component
+const LoadingScreen = lazy(() => import('./LoadingScreen'));
 
 interface AppWrapperProps {
   children: React.ReactNode;
@@ -32,7 +34,11 @@ export default function AppWrapper({ children }: AppWrapperProps) {
   };
 
   if (isLoading) {
-    return <LoadingScreen onLoadingComplete={handleLoadingComplete} />;
+    return (
+      <Suspense fallback={<div className="fixed inset-0 z-50 flex items-center justify-center bg-white">Loading...</div>}>
+        <LoadingScreen onLoadingComplete={handleLoadingComplete} />
+      </Suspense>
+    );
   }
 
   return <>{children}</>;

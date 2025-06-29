@@ -18,8 +18,8 @@ export default function LoadingScreen({ onLoadingComplete }: LoadingScreenProps)
       setTimeout(() => {
         setIsVisible(false);
         onLoadingComplete();
-      }, 1000); // Wait for fade out animation to complete
-    }, 2000);
+      }, 800); // Wait for fade out animation to complete
+    }, 800);
 
     return () => clearTimeout(timer);
   }, [onLoadingComplete]);
@@ -36,7 +36,7 @@ export default function LoadingScreen({ onLoadingComplete }: LoadingScreenProps)
         {/* Logo */}
         <div className="relative w-24 h-24 md:w-32 md:h-32">
           <Image
-            src="/logo.png"
+            src="/logo.webp"
             alt="JobBoard Logo"
             fill
             className="object-contain"
