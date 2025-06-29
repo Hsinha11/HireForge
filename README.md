@@ -311,7 +311,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact & Support
 
-- **Website**: [hireforge.com](https://hireforge-new.vercel.app/)
+- **Website**: [https://hireforge-new.vercel.app/](https://hireforge-new.vercel.app/)
 - **Email**: harianantsinha2003@gmail.com
 - **Twitter**: [@hireforge](https://twitter.com/hireforge)
 - **LinkedIn**: [HireForge](https://linkedin.com/in/harianantsinha)
@@ -322,13 +322,13 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
   <p><strong>Built with ❤️ by the HireForge Team</strong></p>
   <p>Star this repository if you found it helpful!</p>
   
-  <a href="https://github.com/Hsinha1109/hireforge/stargazers">
-    <img src="https://img.shields.io/github/stars/Hsinha1109/hireforge?style=social" alt="Stars">
+  <a href="https://github.com/Hsinha1109/HireForge/stargazers">
+    <img src="https://img.shields.io/github/stars/Hsinha1109/HireForge?style=social" alt="Stars">
   </a>
-  <a href="https://github.com/Hsinha1109/hireforge/network">
-    <img src="https://img.shields.io/github/forks/yourusername/hireforge?style=social" alt="Forks">
+  <a href="https://github.com/Hsinha1109/HireForge/network">
+    <img src="https://img.shields.io/github/forks/Hsinha1109/HireForge?style=social" alt="Forks">
   </a>
-  <a href="https://github.com/Hsinha1109/hireforge/issues">
-    <img src="https://img.shields.io/github/issues/yourusername/hireforge" alt="Issues">
+  <a href="https://github.com/Hsinha1109/HireForge/issues">
+    <img src="https://img.shields.io/github/issues/Hsinha1109/HireForge" alt="Issues">
   </a>
 </div>
