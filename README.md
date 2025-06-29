@@ -12,7 +12,7 @@
 <div align="center">
   <img src="public/logo.png" alt="HireForge Logo" width="200" height="200" style="border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
   
-  ### 🌐 [Live Demo](https://hireforge.vercel.app) | 📱 [Mobile Demo](https://hireforge.vercel.app)
+  ### 🌐 [Live Demo](https://hireforge-new.vercel.app/) | 📱 [Mobile Demo](https://hireforge-new.vercel.app/)
   
   [![Deploy on Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/hireforge)
 </div>
@@ -111,7 +111,7 @@
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/hireforge.git
+   git clone https://github.com/Hsinha11/HireForge.git
    cd hireforge
    ```
 
