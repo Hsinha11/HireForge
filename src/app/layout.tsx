@@ -83,7 +83,7 @@ export default function RootLayout({
           <AppWrapper>
             {children}
           </AppWrapper>
-          <SpeedInsights />
+          {/* <SpeedInsights /> */}
         </body>
       </html>
     </ClerkProvider>
