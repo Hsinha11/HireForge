@@ -1,69 +1,15 @@
 'use client'
 
 import Link from "next/link"
-import { useState } from "react"
+import { useState, lazy, Suspense } from "react"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { UserButton, SignedIn, SignedOut, useUser } from "@clerk/nextjs"
-import { useRouter } from "next/navigation"
-// import Image from "next/image"
+import { UserButton, SignedIn, SignedOut } from "@clerk/nextjs"
 
-export function RoleButtons() {
-  const { user } = useUser()
-  const router = useRouter()
+// Lazy load the RoleButtons component
+const RoleButtons = lazy(() => import('./RoleButtons'))
 
-  const setRoleAndRedirect = async (role: "applicant" | "company") => {
-    if (!user) {
-      router.push("/sign-in")
-      return
-    }
-      try{
-        const currentRole = user.unsafeMetadata?.role
-        const currentSlug = user.unsafeMetadata?.slug as string | undefined
-
-        if (role === "company" && currentRole === "company" && currentSlug) {
-          router.push("/dashboard")
-        } else {
-          router.push("/companies/create")
-        }
-
-        if (role === "applicant" && currentRole !== "applicant") {
-          await user.update({
-            unsafeMetadata: { role: "applicant" },
-          });
-        }
-    
-        router.push("/jobs");
-        return;
-
-      }catch (error) {
-      console.error("Failed to update user role:", error);
-      alert("Failed to update role. Please try again.");
-    }
-      // const current = user.unsafeMetadata?.role
-      // if (current !== role) {
-      //   try {
-      //     await user.update({
-      //       unsafeMetadata: { role }
-      //     });
-      //   } catch (error) {
-      //     console.error("Failed to update user role:", error);
-      //     // Continue anyway - role will be set on next login
-      //   }
-      // }
-  
-      // router.push(role === "company" ? "/companies/create" : "/jobs")
-  }
-
-  return (
-    <div className="flex gap-2">
-      <button onClick={() => setRoleAndRedirect("applicant")} className="text-md cursor-pointer text-blue-700 hover:text-blue-800">For Jobseekers</button>
-      <button onClick={() => setRoleAndRedirect("company")} className="text-md cursor-pointer text-blue-700 hover:text-blue-800">For Companies</button>
-    </div>
-  )
-}
-
-  export default function Navbar() {
+export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -76,7 +22,9 @@ export function RoleButtons() {
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center space-x-4">
-        <RoleButtons />
+          <Suspense fallback={<div className="w-20 h-8 bg-gray-200 rounded animate-pulse"></div>}>
+            <RoleButtons />
+          </Suspense>
           
           {/* Show UserButton when signed in */}
           <SignedIn>
@@ -102,24 +50,26 @@ export function RoleButtons() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden mt-2 space-y-2 flex flex-col items-center justify-center gap-2 px-2">
-          <RoleButtons />
+        <div className="md:hidden mt-4 space-y-2">
+          <Suspense fallback={<div className="w-full h-8 bg-gray-200 rounded animate-pulse"></div>}>
+            <RoleButtons />
+          </Suspense>
           
-          {/* Show UserButton when signed in */}
           <SignedIn>
             <div className="flex justify-center">
               <UserButton afterSignOutUrl="/" />
             </div>
           </SignedIn>
           
-          {/* Show Login/Sign Up buttons when signed out */}
           <SignedOut>
-            <Link href="/sign-in">
-              <Button variant="outline" className="w-full text-blue-600 text-md cursor-pointer hover:text-blue-800">Login</Button>
-            </Link>
-            <Link href="/sign-up">
-              <Button className="w-full text-md bg-blue-600 hover:bg-blue-800 cursor-pointer">Sign Up</Button>
-            </Link>
+            <div className="flex flex-col space-y-2">
+              <Link href="/sign-in">
+                <Button variant="outline" className="w-full text-blue-600 hover:text-blue-800 cursor-pointer">Login</Button>
+              </Link>
+              <Link href="/sign-up">
+                <Button className="w-full bg-blue-600 cursor-pointer hover:bg-blue-800">Sign Up</Button>
+              </Link>
+            </div>
           </SignedOut>
         </div>
       )}

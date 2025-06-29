@@ -18,6 +18,8 @@ const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   display: "swap",
+  preload: true,
+  fallback: ['system-ui', 'sans-serif'],
 });
 
 // Monospace font for code elements
@@ -59,6 +61,22 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
+        <head>
+          {/* Preconnect to third-party domains */}
+          <link rel="preconnect" href="https://clerk.accounts.dev" />
+          <link rel="preconnect" href="https://clerk.dev" />
+          <link rel="preconnect" href="https://supabase.co" />
+          <link rel="dns-prefetch" href="https://clerk.accounts.dev" />
+          <link rel="dns-prefetch" href="https://clerk.dev" />
+          <link rel="dns-prefetch" href="https://supabase.co" />
+          
+          {/* Preload critical fonts for LCP */}
+          <link 
+            rel="preload" 
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" 
+            as="style" 
+          />
+        </head>
         <body 
           className={`${inter.variable} ${poppins.variable} ${jetbrainsMono.variable} antialiased`}
         >
