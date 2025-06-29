@@ -43,7 +43,7 @@ export default function HomePage() {
                     </h2>
 
                     <div className="w-full  flex flex-col items-center">
-                        <Carousel opts={{ loop: true }} className="w-full ">
+                        <Carousel opts={{ loop: true }} className="w-full " aria-label="Customer testimonials">
                             <CarouselContent>
                                 {reviews.map((review, index) => (
                                     <CarouselItem
@@ -52,12 +52,12 @@ export default function HomePage() {
                                     >
                                         <Card className="w-full">
                                             <CardContent className="flex flex-col items-center justify-center p-6 space-y-2">
-                                                <p className="text-gray-600 italic text-center">
+                                                <blockquote className="text-gray-600 italic text-center">
                                                     &ldquo;{review.text}&rdquo;
-                                                </p>
-                                                <div className="text-md text-gray-700 font-semibold">
+                                                </blockquote>
+                                                <cite className="text-md text-gray-700 font-semibold not-italic">
                                                     {review.name}
-                                                </div>
+                                                </cite>
                                                 <div className="text-md text-gray-500">
                                                     {review.role}
                                                 </div>
@@ -66,8 +66,8 @@ export default function HomePage() {
                                     </CarouselItem>
                                 ))}
                             </CarouselContent>
-                            <CarouselPrevious />
-                            <CarouselNext />
+                            <CarouselPrevious aria-label="Previous testimonial" />
+                            <CarouselNext aria-label="Next testimonial" />
                         </Carousel>
                     </div>
                 </div>

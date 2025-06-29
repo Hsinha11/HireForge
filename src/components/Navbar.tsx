@@ -43,14 +43,20 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Toggle */}
-        <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
+        <button 
+          className="md:hidden" 
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label={isOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isOpen}
+          aria-controls="mobile-menu"
+        >
           {isOpen ? <X className="w-6 h-6 cursor-pointer" /> : <Menu className="w-6 h-6 cursor-pointer" />}
         </button>
       </div>
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden mt-4 space-y-2">
+        <div id="mobile-menu" className="md:hidden mt-4 space-y-2" role="navigation" aria-label="Mobile navigation">
           <Suspense fallback={<div className="w-full h-8 bg-gray-200 rounded animate-pulse"></div>}>
             <RoleButtons />
           </Suspense>

@@ -134,11 +134,12 @@ export function HeroButtons() {
   };
   
   return (
-    <div className="flex justify-center gap-4 pt-4">
+    <div className="flex justify-center gap-4 pt-4" role="group" aria-label="Main action buttons">
       <button
         onClick={() => handleClick("applicant")}
         disabled={isLoading}
         className="px-12 py-4 text-xl bg-blue-600 text-white rounded hover:bg-blue-700 transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+        aria-label={isLoading ? "Loading, please wait" : "Explore available jobs"}
       >
         {isLoading ? "Loading..." : "Explore Jobs"}
       </button>
@@ -147,6 +148,7 @@ export function HeroButtons() {
         onClick={() => handleClick("company")}
         disabled={isLoading}
         className="px-12 py-4 border text-xl border-blue-600 text-blue-600 rounded hover:bg-blue-50 transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+        aria-label={isLoading ? "Loading, please wait" : "Post jobs and hire talent"}
       >
         {isLoading ? "Loading..." : "Hire Talent"}
       </button>

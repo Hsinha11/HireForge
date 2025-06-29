@@ -38,9 +38,21 @@ export default function RoleButtons() {
   }
 
   return (
-    <div className="flex gap-2">
-      <button onClick={() => setRoleAndRedirect("applicant")} className="text-md cursor-pointer text-blue-700 hover:text-blue-800">For Jobseekers</button>
-      <button onClick={() => setRoleAndRedirect("company")} className="text-md cursor-pointer text-blue-700 hover:text-blue-800">For Companies</button>
+    <div className="flex gap-2" role="group" aria-label="User role selection">
+      <button 
+        onClick={() => setRoleAndRedirect("applicant")} 
+        className="text-md cursor-pointer text-blue-700 hover:text-blue-800"
+        aria-label="Switch to job seeker mode"
+      >
+        For Jobseekers
+      </button>
+      <button 
+        onClick={() => setRoleAndRedirect("company")} 
+        className="text-md cursor-pointer text-blue-700 hover:text-blue-800"
+        aria-label="Switch to company mode"
+      >
+        For Companies
+      </button>
     </div>
   )
 } 
