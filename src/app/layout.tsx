@@ -1,33 +1,8 @@
 import type { Metadata } from "next";
-import { Inter, Poppins, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 // import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ClerkProvider } from "@clerk/nextjs";
 import AppWrapper from "@/components/AppWrapper";
-
-// Main font for body text - clean and readable
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-// Beautiful font for headings - modern and professional
-const poppins = Poppins({
-  variable: "--font-poppins",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
-  preload: true,
-  fallback: ['system-ui', 'sans-serif'],
-});
-
-// Monospace font for code elements
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
-  subsets: ["latin"],
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "HireForge",
@@ -69,17 +44,8 @@ export default function RootLayout({
           <link rel="dns-prefetch" href="https://clerk.accounts.dev" />
           <link rel="dns-prefetch" href="https://clerk.dev" />
           <link rel="dns-prefetch" href="https://supabase.co" />
-          
-          {/* Preload critical fonts for LCP */}
-          <link 
-            rel="preload" 
-            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" 
-            as="style" 
-          />
         </head>
-        <body 
-          className={`${inter.variable} ${poppins.variable} ${jetbrainsMono.variable} antialiased`}
-        >
+        <body className="antialiased">
           <AppWrapper>
             {children}
           </AppWrapper>
