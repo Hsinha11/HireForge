@@ -3,7 +3,7 @@
 import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { isAdmin } from "@/lib/adminAuth";
+import { isAdminClient } from "@/lib/adminAuth";
 
 export default function RoleButtons() {
   const { user } = useUser()
@@ -11,9 +11,10 @@ export default function RoleButtons() {
   const [isAdminUser, setIsAdminUser] = useState(false)
 
   useEffect(() => {
-    const checkAdminStatus = async () => {
+    const checkAdminStatus = () => {
       if (user) {
-        const adminStatus = await isAdmin();
+        const userEmail = user.emailAddresses[0]?.emailAddress;
+        const adminStatus = isAdminClient(userEmail);
         setIsAdminUser(adminStatus);
       }
     };

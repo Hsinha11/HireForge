@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+// import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ExternalLink, CheckCircle, AlertCircle } from "lucide-react";
 
 export default function AdminJobPosting() {
@@ -122,7 +122,7 @@ export default function AdminJobPosting() {
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-medium">Salary (USD) *</label>
+            <label className="text-sm font-medium">Salary (INR) *</label>
             <Input
               type="number"
               value={formData.salary}

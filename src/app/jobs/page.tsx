@@ -46,20 +46,10 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import ClientJobsPage from "@/app/jobs/ClientJobsPage";
-import { auth } from "@clerk/nextjs/server";
-import { redirect } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 import Link from "next/link";
+
 export default async function JobsPage() {
-  // Server-side protection - redirect to sign-in if not authenticated
-  const { userId } = await auth();
-  
-  if (!userId) {
-    redirect("/sign-in");
-  }
-
-  // const user = await currentUser();
-
   // Fetch jobs from Supabase
   const { data: jobs, error } = await supabase
     .from('jobs')

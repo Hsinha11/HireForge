@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ExternalLink, Edit, Trash2, Eye } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { ExternalLink, Trash2, Eye } from "lucide-react";
 
 interface AdminJob {
   id: string;
@@ -15,6 +15,32 @@ interface AdminJob {
   description: string;
   externalUrl: string;
   createdAt: string;
+}
+
+function mapJobApiToCamel(job: unknown): AdminJob {
+  const j = job as {
+    id: string;
+    title: string;
+    company_name?: string;
+    company?: string;
+    location: string;
+    type: string;
+    salary: number;
+    description: string;
+    external_url?: string;
+    created_at?: string;
+  };
+  return {
+    id: j.id,
+    title: j.title,
+    company: j.company_name || j.company || "",
+    location: j.location,
+    type: j.type,
+    salary: j.salary,
+    description: j.description,
+    externalUrl: j.external_url ?? "",
+    createdAt: j.created_at ?? "",
+  };
 }
 
 export default function AdminJobList() {
@@ -31,11 +57,11 @@ export default function AdminJobList() {
       const response = await fetch("/api/admin/jobs");
       if (response.ok) {
         const data = await response.json();
-        setJobs(data);
+        setJobs(data.map(mapJobApiToCamel));
       } else {
         setError("Failed to fetch admin jobs");
       }
-    } catch (error) {
+    } catch {
       setError("Error fetching admin jobs");
     } finally {
       setLoading(false);
@@ -55,7 +81,7 @@ export default function AdminJobList() {
       } else {
         alert("Failed to delete job");
       }
-    } catch (error) {
+    } catch {
       alert("Error deleting job");
     }
   };
@@ -67,7 +93,7 @@ export default function AdminJobList() {
   const formatSalary = (salary: number) => {
     return new Intl.NumberFormat("en-US", {
       style: "currency",
-      currency: "USD",
+      currency: "INR",
       minimumFractionDigits: 0,
     }).format(salary);
   };
@@ -150,7 +176,7 @@ export default function AdminJobList() {
                     <Button
                       variant="outline"
                       size="sm"
-                      onClick={() => window.open(job.externalUrl, "_blank")}
+                      onClick={() => job.externalUrl && window.open(job.externalUrl, "_blank")}
                       className="flex items-center gap-2"
                     >
                       <Eye className="w-4 h-4" />
@@ -160,7 +186,7 @@ export default function AdminJobList() {
                     <Button
                       variant="outline"
                       size="sm"
-                      onClick={() => window.open(job.externalUrl, "_blank")}
+                      onClick={() => job.externalUrl && window.open(job.externalUrl, "_blank")}
                       className="flex items-center gap-2"
                     >
                       <ExternalLink className="w-4 h-4" />

@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { auth } from "@clerk/nextjs/server";
-import { isAdmin } from "@/lib/adminAuth";
+import { isAdminServer } from "@/lib/adminAuthServer";
 import AdminDashboard from "@/components/admin/AdminDashboard";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -12,7 +12,7 @@ export default async function AdminPage() {
     redirect("/sign-in");
   }
 
-  const adminStatus = await isAdmin();
+  const adminStatus = await isAdminServer();
   
   if (!adminStatus) {
     redirect("/");

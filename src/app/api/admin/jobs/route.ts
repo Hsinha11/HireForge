@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@clerk/nextjs/server";
-import { isAdmin } from "@/lib/adminAuth";
+import { isAdminServer } from "@/lib/adminAuthServer";
 import { supabase } from "@/lib/supabase";
 
 // GET - Fetch admin jobs
@@ -11,7 +11,7 @@ export async function GET() {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const adminStatus = await isAdmin();
+    const adminStatus = await isAdminServer();
     if (!adminStatus) {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const adminStatus = await isAdmin();
+    const adminStatus = await isAdminServer();
     if (!adminStatus) {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }

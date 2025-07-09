@@ -1,25 +1,12 @@
-import { currentUser } from "@clerk/nextjs/server";
-
 // List of admin email addresses
 const ADMIN_EMAILS = [
-  "your-email@example.com", // Replace with your email
-  "friend1@example.com",    // Replace with your friends' emails
-  "friend2@example.com",
+  "couchpotato6909@gmail.com", // Replace with your email
 ];
 
-export async function isAdmin() {
-  try {
-    const user = await currentUser();
-    if (!user) return false;
-    
-    const userEmail = user.emailAddresses[0]?.emailAddress;
-    if (!userEmail) return false;
-    
-    return ADMIN_EMAILS.includes(userEmail);
-  } catch (error) {
-    console.error("Error checking admin status:", error);
-    return false;
-  }
+// Client-side admin check
+export function isAdminClient(userEmail?: string) {
+  if (!userEmail) return false;
+  return ADMIN_EMAILS.includes(userEmail);
 }
 
 export function getAdminEmails() {

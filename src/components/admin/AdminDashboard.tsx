@@ -1,15 +1,30 @@
 "use client";
 
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Plus, ExternalLink, Building, Users } from "lucide-react";
-import AdminJobPosting from "./AdminJobPosting";
-import AdminJobList from "./AdminJobList";
+import AdminJobPosting from "@/components/admin/AdminJobPosting";
+import AdminJobList from "@/components/admin/AdminJobList";
 
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState("post-job");
+  const [adminJobCount, setAdminJobCount] = useState<number>(0);
+
+  useEffect(() => {
+    async function fetchAdminJobCount() {
+      try {
+        const res = await fetch("/api/admin/jobs");
+        if (res.ok) {
+          const jobs = await res.json();
+          setAdminJobCount(jobs.length);
+        }
+      } catch {
+        setAdminJobCount(0);
+      }
+    }
+    fetchAdminJobCount();
+  }, []);
 
   return (
     <div className="space-y-6">
@@ -59,7 +74,7 @@ export default function AdminDashboard() {
                 <ExternalLink className="h-4 w-4 text-muted-foreground" />
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">0</div>
+                <div className="text-2xl font-bold">{adminJobCount}</div>
                 <p className="text-xs text-muted-foreground">
                   External job postings
                 </p>

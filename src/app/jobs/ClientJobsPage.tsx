@@ -69,7 +69,18 @@ import { useRouter, useSearchParams } from "next/navigation";
 //   );
 // }
 
-export default function ClientJobsPage({ jobs }: { jobs: any[] }) {
+type Job = {
+  id: string;
+  title: string;
+  company?: { name?: string } | string;
+  companies?: { name?: string };
+  company_name?: string;
+  location: string;
+  type: string;
+  is_external?: boolean;
+};
+
+export default function ClientJobsPage({ jobs }: { jobs: Job[] }) {
   const router = useRouter()
   const searchParams = useSearchParams()
   
@@ -125,11 +136,16 @@ export default function ClientJobsPage({ jobs }: { jobs: any[] }) {
               key={job.id || idx}
               id={job.id}
               title={job.title}
-              company={job.company?.name || job.company_name || ''}
+              company={
+                (typeof job.company === "object" && job.company !== null && "name" in job.company
+                  ? job.company.name
+                  : typeof job.companies === "object" && job.companies !== null && "name" in job.companies
+                    ? job.companies.name
+                    : job.company_name) || ""
+              }
               location={job.location}
               type={job.type}
               isExternal={job.is_external || false}
-              externalUrl={job.external_url}
             />
           ))}
         </div>

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@clerk/nextjs/server";
-import { isAdmin } from "@/lib/adminAuth";
+import { isAdminServer } from "@/lib/adminAuthServer";
 import { supabase } from "@/lib/supabase";
 
 // DELETE - Delete admin job
@@ -14,7 +14,7 @@ export async function DELETE(
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const adminStatus = await isAdmin();
+    const adminStatus = await isAdminServer();
     if (!adminStatus) {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
