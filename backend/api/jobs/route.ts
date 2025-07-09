@@ -83,3 +83,38 @@ export async function jobCreateRoute(app: FastifyInstance){
 });
 
 }
+
+export async function jobDeleteRoute(app: FastifyInstance) {
+  app.delete('/jobs/:id', async (request, reply) => {
+    const { id } = request.params as { id: string };
+    try {
+      const deletedJob = await prisma.job.delete({ where: { id } });
+      reply.send(deletedJob);
+    } catch (err) {
+      reply.status(500).send({ error: 'Failed to delete job', err });
+    }
+  });
+}
+
+export async function jobEditRoute(app: FastifyInstance) {
+  app.put('/jobs/:id', async (request, reply) => {
+    const { id } = request.params as { id: string };
+    const body = request.body as Partial<{
+      title: string;
+      type: string;
+      location: string;
+      description: string;
+      salary: number;
+      companyId: string;
+    }>;
+    try {
+      const updatedJob = await prisma.job.update({
+        where: { id },
+        data: body,
+      });
+      reply.send(updatedJob);
+    } catch (err) {
+      reply.status(500).send({ error: 'Failed to update job', err });
+    }
+  });
+}

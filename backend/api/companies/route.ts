@@ -143,3 +143,38 @@ export async function companyCreateRoute(app: FastifyInstance) {
     }
   })
 }
+
+export async function companyDeleteRoute(app: FastifyInstance) {
+  app.delete('/companies/:slug', async (request, reply) => {
+    const { slug } = request.params as { slug: string };
+    try {
+      const deletedCompany = await prisma.company.delete({ where: { slug } });
+      reply.send(deletedCompany);
+    } catch (err) {
+      reply.status(500).send({ error: 'Failed to delete company', err });
+    }
+  });
+}
+
+export async function companyEditRoute(app: FastifyInstance) {
+  app.put('/companies/:slug', async (request, reply) => {
+    const { slug } = request.params as { slug: string };
+    const body = request.body as Partial<{
+      name: string;
+      website: string;
+      location: string;
+      employees: string;
+      tags: string[];
+      description: string;
+    }>;
+    try {
+      const updatedCompany = await prisma.company.update({
+        where: { slug },
+        data: body,
+      });
+      reply.send(updatedCompany);
+    } catch (err) {
+      reply.status(500).send({ error: 'Failed to update company', err });
+    }
+  });
+}

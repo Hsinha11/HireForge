@@ -3,8 +3,8 @@
 // backend/server.ts
 import Fastify from 'fastify'
 import cors from '@fastify/cors'
-import { companiesRoute, companyDetailRoute, companyApplicationsRoute, companyCreateRoute } from './api/companies/route'
-import { jobsRoute, jobDetailRoute, jobCreateRoute } from './api/jobs/route'
+import { companiesRoute, companyDetailRoute, companyApplicationsRoute, companyCreateRoute , companyDeleteRoute, companyEditRoute} from './api/companies/route'
+import { jobsRoute, jobDetailRoute, jobCreateRoute , jobDeleteRoute, jobEditRoute} from './api/jobs/route'
 import { applicationRoutes } from './api/applications/route'
 import dotenv from 'dotenv'
 
@@ -32,10 +32,14 @@ await app.register(companiesRoute)
 await app.register(companyDetailRoute)
 await app.register(companyApplicationsRoute)
 await app.register(companyCreateRoute)
+await app.register(companyDeleteRoute)
+await app.register(companyEditRoute)
 await app.register(jobsRoute)
 await app.register(jobDetailRoute)
 await app.register(jobCreateRoute)
 await app.register(applicationRoutes)
+await app.register(jobDeleteRoute)
+await app.register(jobEditRoute)
 
 // Global error handler
 app.setErrorHandler((error, request, reply) => {
