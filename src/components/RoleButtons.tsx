@@ -2,10 +2,23 @@
 
 import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { isAdmin } from "@/lib/adminAuth";
 
 export default function RoleButtons() {
   const { user } = useUser()
   const router = useRouter()
+  const [isAdminUser, setIsAdminUser] = useState(false)
+
+  useEffect(() => {
+    const checkAdminStatus = async () => {
+      if (user) {
+        const adminStatus = await isAdmin();
+        setIsAdminUser(adminStatus);
+      }
+    };
+    checkAdminStatus();
+  }, [user]);
 
   const setRoleAndRedirect = async (role: "applicant" | "company") => {
     if (!user) {
@@ -53,6 +66,15 @@ export default function RoleButtons() {
       >
         For Companies
       </button>
+      {isAdminUser && (
+        <button 
+          onClick={() => router.push("/admin")} 
+          className="text-md cursor-pointer text-red-600 hover:text-red-700 font-medium"
+          aria-label="Access admin dashboard"
+        >
+          Admin
+        </button>
+      )}
     </div>
   )
 } 

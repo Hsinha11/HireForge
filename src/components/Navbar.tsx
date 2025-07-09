@@ -16,7 +16,7 @@ export default function Navbar() {
     <nav className="bg-white border-b shadow px-4 py-4">
       <div className="max-w-full mx-auto flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="text-3xl font-bold text-blue-700 font-heading drop-shadow-lg hover:text-blue-800 transition-colors duration-200 hover:drop-shadow-xl">HireForge
+        <Link href="/" className="text-3xl font-bold text-blue-700 font-heading   hover:text-blue-800 ">HireForge
           {/* <Image src="/logo.png" alt="HireForge" width={100} height={100} /> */}
         </Link>
 

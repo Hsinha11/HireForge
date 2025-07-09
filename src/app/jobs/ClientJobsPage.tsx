@@ -125,9 +125,11 @@ export default function ClientJobsPage({ jobs }: { jobs: any[] }) {
               key={job.id || idx}
               id={job.id}
               title={job.title}
-              company={job.company?.name || ''}
+              company={job.company?.name || job.company_name || ''}
               location={job.location}
               type={job.type}
+              isExternal={job.is_external || false}
+              externalUrl={job.external_url}
             />
           ))}
         </div>
