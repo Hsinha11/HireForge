@@ -52,7 +52,17 @@ export default function RoleButtons() {
   }
 
   return (
-    <div className="flex gap-2" role="group" aria-label="User role selection">
+    <>
+      {isAdminUser ? (
+      <button 
+        onClick={() => router.push("/admin")} 
+        className="text-lg cursor-pointer text-blue-600 hover:text-blue-700 font-medium"
+        aria-label="Access admin dashboard"
+      >
+        Admin Dashboard
+      </button>
+    ) : (
+      <div className="flex gap-2" role="group" aria-label="User role selection">
       <button 
         onClick={() => setRoleAndRedirect("applicant")} 
         className="text-md cursor-pointer text-blue-700 hover:text-blue-800"
@@ -67,15 +77,10 @@ export default function RoleButtons() {
       >
         For Companies
       </button>
-      {isAdminUser && (
-        <button 
-          onClick={() => router.push("/admin")} 
-          className="text-md cursor-pointer text-red-600 hover:text-red-700 font-medium"
-          aria-label="Access admin dashboard"
-        >
-          Admin
-        </button>
-      )}
+      
     </div>
+    )}
+    
+    </>
   )
 } 
