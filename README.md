@@ -12,9 +12,9 @@
 <div align="center">
   <img src="public/logo.webp" alt="HireForge Logo" width="200" height="200" style="border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
   
-  ### 🌐 [Live Demo](https://hireforge.vercel.app) | 📱 [Mobile Demo](https://hireforge.vercel.app)
+  ### 🌐 [Live Demo](https://hireforge-new.vercel.app/) | 📱 [Mobile Demo](https://hireforge-new.vercel.app/)
   
-  [![Deploy on Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Hsinha1109/hireforge)
+  [![Deploy on Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Hsinha11/HireForge)
 </div>
 
 ---
@@ -128,7 +128,7 @@
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/Hsinha1109/hireforge.git
+   git clone https://github.com/Hsinha11/HireForge.git
    cd hireforge
    ```
 
@@ -371,10 +371,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact & Support
 
-- **Website**: [hireforge.com](https://hireforge.com)
-- **Email**: support@hireforge.com
-- **Twitter**: [@hireforge](https://twitter.com/hireforge)
-- **LinkedIn**: [HireForge](https://linkedin.com/company/hireforge)
+- **Website**: [HireForge](https://hireforge-new.vercel.app)
+- **Email**: harianantsinha2003@gmail.com
+- **LinkedIn**: [Harianant Sinha](https://linkedin.com/in/harianantsinha)
 
 ---
 
@@ -382,13 +381,13 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
   <p><strong>Built with ❤️ by the HireForge Team</strong></p>
   <p>Star this repository if you found it helpful!</p>
   
-  <a href="https://github.com/Hsinha1109/hireforge/stargazers">
-    <img src="https://img.shields.io/github/stars/Hsinha1109/hireforge?style=social" alt="Stars">
+  <a href="https://github.com/Hsinha11/hireforge/stargazers">
+    <img src="https://img.shields.io/github/stars/Hsinha11/hireforge?style=social" alt="Stars">
   </a>
-  <a href="https://github.com/Hsinha1109/hireforge/network">
-    <img src="https://img.shields.io/github/forks/Hsinha1109/hireforge?style=social" alt="Forks">
+  <a href="https://github.com/Hsinha11/hireforge/network">
+    <img src="https://img.shields.io/github/forks/Hsinha11/HireForge?style=social" alt="Forks">
   </a>
-  <a href="https://github.com/Hsinha1109/hireforge/issues">
-    <img src="https://img.shields.io/github/issues/Hsinha1109/hireforge" alt="Issues">
+  <a href="https://github.com/Hsinha11/hireforge/issues">
+    <img src="https://img.shields.io/github/issues/Hsinha11/HireForge" alt="Issues">
   </a>
 </div>
